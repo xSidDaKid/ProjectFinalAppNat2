@@ -7,8 +7,8 @@
     <string name="fermer">FERMER</string>
 
     <!-- Identification -->
-    <string name="p1">Joueur 1</string>
-    <string name="p2">Joueur 2</string>
+    <string name="p1">Joueur 1: </string>
+    <string name="p2">Joueur 2: </string>
     <string name="jouer">JOUEUR</string>
 
     <!-- Jeu -->
