@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">TP3-AppNat2</string>
+    <!-- Menu -->
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="joueur1">UN JOUEUR</string>
+    <string name="joueur2">DEUX JOUEUR</string>
+    <string name="about">À PROPOS</string>
+    <string name="fermer">FERMER</string>
+
+    <!-- Identification -->
+    <string name="p1">Joueur 1</string>
+    <string name="p2">Joueur 2</string>
+    <string name="jouer">JOUEUR</string>
+
+    <!-- Jeu -->
+    <string name="menu">MENU</string>
+    <string name="reset">RECOMMENCER</string>
 </resources>

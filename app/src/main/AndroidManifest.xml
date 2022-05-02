@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TP3AppNat2">
         <activity
-            android:name=".MainActivity"
+            android:name=".JeuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IdentificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

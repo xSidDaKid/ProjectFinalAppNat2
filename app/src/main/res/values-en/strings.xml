@@ -1,0 +1,17 @@
+<resources>
+    <!-- Menu -->
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="joueur1">ONE PLAYER</string>
+    <string name="joueur2">TWO PLAYERS</string>
+    <string name="about">ABOUT</string>
+    <string name="fermer">QUIT</string>
+
+    <!-- Identification -->
+    <string name="p1">Player 1</string>
+    <string name="p2">Player 2</string>
+    <string name="jouer">PLAY</string>
+
+    <!-- Jeu -->
+    <string name="menu">MENU</string>
+    <string name="reset">RESTART</string>
+</resources>
