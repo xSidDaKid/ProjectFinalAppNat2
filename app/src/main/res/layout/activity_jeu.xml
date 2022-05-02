@@ -48,25 +48,25 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/btn_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/btn_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/btn_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/btn_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_column="0"
@@ -74,19 +74,19 @@
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/btn_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/btn_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/btn_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_column="0"
@@ -94,13 +94,13 @@
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/btn_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/btn_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/gallery_thumb" />
