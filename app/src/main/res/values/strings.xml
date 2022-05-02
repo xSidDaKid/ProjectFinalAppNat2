@@ -14,4 +14,11 @@
     <!-- Jeu -->
     <string name="menu">MENU</string>
     <string name="reset">RECOMMENCER</string>
+
+    <!-- A Propos -->
+    <string name="jeuNom">Jeu: Tic Tac Toe</string>
+    <string name="jeuDescription">Description: Création d\'un jeu de Tic Tac Toe pour notre entreprise ACME</string>    <string name="creerPar">Créer Par: Alperen Albaz, Shajaan Balasingam et Gafran Ijaz</string>
+    <string name="groupe">Groupe: 02</string>
+    <string name="cours">Cours: 420-G25-RO</string>
+    <string name="date">Date de remise: 20 mai 2022</string>
 </resources>
