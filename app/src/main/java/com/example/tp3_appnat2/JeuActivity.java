@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,13 +52,63 @@ public class JeuActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         images[finalI][finalJ].setImageResource(R.drawable.o);
-                        images[finalI][finalJ].getLayoutParams().height = 50;
-                        images[finalI][finalJ].getLayoutParams().width = 50;
+                        images[finalI][finalJ].setTag("X");
+                        images[finalI][finalJ].getLayoutParams().height = 182;
+                        images[finalI][finalJ].getLayoutParams().width = 182;
+                        if (verifierGagner())
+                            System.out.println("true");
                     }
                 });
             }
         }
     }
 
+    /**
+     * Methode qui permet de verifier si quelqu'un a gagne
+     * @return True --> Gagner False --> Pas Gagner
+     */
+    private boolean verifierGagner() {
+        //Initialiser a "" (Valeur initiale --> null)
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (images[i][j].getTag() == null)
+                    images[i][j].setTag("");
+            }
+        }
+
+        //Verifie les lignes
+        for (int i = 0; i < 3; i++) {
+            if (images[i][0].getTag().equals(images[i][1].getTag())
+                    && images[i][0].getTag().equals(images[i][2].getTag())
+                    && !images[i][0].getTag().equals("")) {
+                return true;
+            }
+        }
+
+        //Verifie les colonnes
+        for (int i = 0; i < 3; i++) {
+            if (images[0][i].getTag().equals(images[1][i].getTag())
+                    && images[0][i].getTag().equals(images[2][i].getTag())
+                    && !images[0][i].getTag().equals("")) {
+                return true;
+            }
+        }
+
+        //Verifie la diagonale 1
+        if (images[0][0].getTag().equals(images[1][1].getTag())
+                && images[0][0].getTag().equals(images[2][2].getTag())
+                && !images[0][0].getTag().equals("")) {
+            return true;
+        }
+
+        //Verifie la diagonale 2
+        if (images[0][2].getTag().equals(images[1][1].getTag())
+                && images[0][2].getTag().equals(images[2][0].getTag())
+                && !images[0][2].getTag().equals("")) {
+            return true;
+        }
+
+        return false;
+    }
 
 }
