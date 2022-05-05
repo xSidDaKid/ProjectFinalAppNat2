@@ -107,52 +107,7 @@
         </androidx.gridlayout.widget.GridLayout>
 
         <View
-            android:id="@+id/center_vertical"
-            android:layout_width="5dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:background="@color/stick_color"
-            android:visibility="invisible" />
-
-        <View
-            android:id="@+id/left_vertical"
-            android:layout_width="5dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:background="@color/stick_color"
-            android:visibility="invisible" />
-
-        <View
-            android:id="@+id/right_vertical"
-            android:layout_width="5dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:background="@color/stick_color"
-            android:visibility="invisible" />
-
-        <View
-            android:id="@+id/center_horizontal"
-            android:layout_width="250dp"
-            android:layout_height="5dp"
-            android:layout_gravity="center"
-            android:background="@color/stick_color"
-            android:visibility="invisible" />
-
-        <View
-            android:id="@+id/bottom_horizontal"
-            android:layout_width="250dp"
-            android:layout_height="5dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:background="@color/stick_color"
-            android:visibility="invisible" />
-
-        <View
-            android:id="@+id/top_horizontal"
+            android:id="@+id/ligne0"
             android:layout_width="250dp"
             android:layout_height="5dp"
             android:layout_gravity="center"
@@ -161,7 +116,61 @@
             android:visibility="invisible" />
 
         <View
-            android:id="@+id/right_left_diagonal"
+            android:id="@+id/ligne1"
+            android:layout_width="250dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:background="@color/stick_color"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/ligne3"
+            android:layout_width="250dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:background="@color/stick_color"
+            android:visibility="invisible" />
+        <View
+            android:id="@+id/colonne0"
+            android:layout_width="5dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:background="@color/stick_color"
+            android:visibility="invisible" />
+        <View
+            android:id="@+id/colonne1"
+            android:layout_width="5dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="@color/stick_color"
+            android:visibility="invisible" />
+
+
+        <View
+            android:id="@+id/colonne2"
+            android:layout_width="5dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:background="@color/stick_color"
+            android:visibility="invisible" />
+
+
+        <View
+            android:id="@+id/diagonale1"
+            android:layout_width="5dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:background="@color/stick_color"
+            android:rotation="135"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/diagonale2"
             android:layout_width="5dp"
             android:layout_height="350dp"
             android:layout_gravity="center"
@@ -169,14 +178,6 @@
             android:rotation="45"
             android:visibility="invisible" />
 
-        <View
-            android:id="@+id/left_right_diagonal"
-            android:layout_width="5dp"
-            android:layout_height="350dp"
-            android:layout_gravity="center"
-            android:background="@color/stick_color"
-            android:rotation="135"
-            android:visibility="invisible" />
 
     </FrameLayout>
 

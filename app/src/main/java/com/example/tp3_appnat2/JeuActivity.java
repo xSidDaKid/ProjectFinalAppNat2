@@ -8,6 +8,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * @Author Alperen Albaz, Shajaan Balasingam et Gafran Ijaz
+ * @Groupe 02
+ * @Remis_a Toufik Bellal
+ * @Cours 420-G25-RO
+ * @Date_de_remise 20 mai 2022
+ * Classe qui est responsable de la gestion du jeu
+ * <p>
+ TODO: - Les tours; - La sauvegarde des donnees lors de la rotation; - Score; - Validation du nom (Nom obligatoire);- Ajout button MENU et RESET
+ */
 public class JeuActivity extends AppCompatActivity {
 
     private ImageView[][] images = new ImageView[3][3];
@@ -65,9 +75,11 @@ public class JeuActivity extends AppCompatActivity {
 
     /**
      * Methode qui permet de verifier si quelqu'un a gagne
+     *
      * @return True --> Gagner False --> Pas Gagner
      */
     private boolean verifierGagner() {
+
         //Initialiser a "" (Valeur initiale --> null)
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -81,6 +93,7 @@ public class JeuActivity extends AppCompatActivity {
             if (images[i][0].getTag().equals(images[i][1].getTag())
                     && images[i][0].getTag().equals(images[i][2].getTag())
                     && !images[i][0].getTag().equals("")) {
+                montrerLigneGagnant(i);
                 return true;
             }
         }
@@ -90,6 +103,7 @@ public class JeuActivity extends AppCompatActivity {
             if (images[0][i].getTag().equals(images[1][i].getTag())
                     && images[0][i].getTag().equals(images[2][i].getTag())
                     && !images[0][i].getTag().equals("")) {
+                montrerLigneGagnant(i + 3);//+3 pour commencer a la case 3 pour les colonnes
                 return true;
             }
         }
@@ -98,6 +112,7 @@ public class JeuActivity extends AppCompatActivity {
         if (images[0][0].getTag().equals(images[1][1].getTag())
                 && images[0][0].getTag().equals(images[2][2].getTag())
                 && !images[0][0].getTag().equals("")) {
+            montrerLigneGagnant(6);
             return true;
         }
 
@@ -105,10 +120,49 @@ public class JeuActivity extends AppCompatActivity {
         if (images[0][2].getTag().equals(images[1][1].getTag())
                 && images[0][2].getTag().equals(images[2][0].getTag())
                 && !images[0][2].getTag().equals("")) {
+            montrerLigneGagnant(7);
             return true;
         }
 
         return false;
     }
+
+    /**
+     * Methode qui permet de savoir quelle ligne est le gagnant
+     *
+     * @param ligne Numero de la solution (8 solutions possibles)
+     */
+    private void montrerLigneGagnant(int ligne) {
+        View view = findViewById(R.id.ligne0);//Valeur par defaut
+        switch (ligne) {
+            case 0:
+                view = findViewById(R.id.ligne0);
+                break;
+            case 1:
+                view = findViewById(R.id.ligne1);
+                break;
+            case 2:
+                view = findViewById(R.id.ligne3);
+                break;
+            case 3:
+                view = findViewById(R.id.colonne0);
+                break;
+            case 4:
+                view = findViewById(R.id.colonne1);
+                break;
+            case 5:
+                view = findViewById(R.id.colonne2);
+                break;
+            case 6:
+                view = findViewById(R.id.diagonale1);
+                break;
+            case 7:
+                view = findViewById(R.id.diagonale2);
+                break;
+
+        }
+        view.setVisibility(View.VISIBLE);
+    }
+
 
 }
