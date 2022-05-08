@@ -76,6 +76,7 @@ public class JeuActivity extends AppCompatActivity {
                         }
                         images[finalI][finalJ].getLayoutParams().height = 182;
                         images[finalI][finalJ].getLayoutParams().width = 182;
+                        images[finalI][finalJ].setClickable(false);
                         if(verifierGagner()){
                             System.out.println("true");
                         }
@@ -108,6 +109,7 @@ public class JeuActivity extends AppCompatActivity {
                 montrerLigneGagnant(i);
                 String valeur = images[i][0].getTag().toString();
                 System.out.println(valeur);
+                unDesJoueursAGagner();
                 return true;
             }
         }
@@ -118,6 +120,7 @@ public class JeuActivity extends AppCompatActivity {
                     && images[0][i].getTag().equals(images[2][i].getTag())
                     && !images[0][i].getTag().equals("")) {
                 montrerLigneGagnant(i + 3);//+3 pour commencer a la case 3 pour les colonnes
+                unDesJoueursAGagner();
                 return true;
             }
         }
@@ -127,6 +130,7 @@ public class JeuActivity extends AppCompatActivity {
                 && images[0][0].getTag().equals(images[2][2].getTag())
                 && !images[0][0].getTag().equals("")) {
             montrerLigneGagnant(6);
+            unDesJoueursAGagner();
             return true;
         }
 
@@ -135,6 +139,7 @@ public class JeuActivity extends AppCompatActivity {
                 && images[0][2].getTag().equals(images[2][0].getTag())
                 && !images[0][2].getTag().equals("")) {
             montrerLigneGagnant(7);
+            unDesJoueursAGagner();
             return true;
         }
 
@@ -178,5 +183,18 @@ public class JeuActivity extends AppCompatActivity {
         view.setVisibility(View.VISIBLE);
     }
 
+    private void unDesJoueursAGagner(){
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                if(images[i][j].isClickable()){
+                    images[i][j].setClickable(false);
+                }
+            }
+        }
+    }
 
+
+    public void click_restart(View view) {
+        this.recreate();
+    }
 }
