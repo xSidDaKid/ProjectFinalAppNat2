@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @Author Alperen Albaz, Shajaan Balasingam et Gafran Ijaz
@@ -16,7 +18,7 @@ import android.widget.TextView;
  * @Date_de_remise 20 mai 2022
  * Classe qui est responsable de la gestion du jeu
  * <p>
- TODO: - Les tours; - La sauvegarde des donnees lors de la rotation; - Score; - Validation du nom (Nom obligatoire);- Ajout button MENU et RESET
+ TODO: - Les tours; - La sauvegarde des donnees lors de la rotation; - Score;
  */
 public class JeuActivity extends AppCompatActivity {
 
@@ -24,12 +26,25 @@ public class JeuActivity extends AppCompatActivity {
 
     private TextView textViewJoueur1, textViewJoueur2;
     private int tour = 1;
-
+    private String joueur="";
+    private boolean partiFini = false;
+    private int scoreJoueur1, scoreJoueur2 = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
         init();
+
+        // l'idee etant que si la parti est fini, on le dirigie vers une autre page pour
+        // demander s'il veut commencer en premier ou non au gagnant
+        if(partiFini){
+            Intent intent = new Intent(this, VictoireActivity.class);
+            Bundle b = new Bundle();
+            b.putString("GAGNANT", joueur);
+            intent.putExtras(b);
+            startActivity(intent);
+            this.recreate();
+        }
     }
 
     public void init() {
@@ -77,11 +92,25 @@ public class JeuActivity extends AppCompatActivity {
                         images[finalI][finalJ].getLayoutParams().height = 182;
                         images[finalI][finalJ].getLayoutParams().width = 182;
                         images[finalI][finalJ].setClickable(false);
-                        if(verifierGagner()){
+                        Pair<Boolean, String> conditionVictoire = verifierGagner();
+                        if(conditionVictoire.first == true){
+                            partiFini = true;
                             System.out.println("true");
+                            System.out.println(conditionVictoire.second);
+                            if(conditionVictoire.second == "O"){
+                                joueur = "Player 1";
+                                scoreJoueur1+=1;
+                            }else{
+                                joueur = "Player 2";
+                                scoreJoueur2+=2;
+                            }
+                            Toast.makeText(getApplicationContext(),"Player  "+ conditionVictoire.second+ " won",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+//                if(partiFini){
+//                    break;
+//                }
             }
         }
     }
@@ -91,7 +120,7 @@ public class JeuActivity extends AppCompatActivity {
      *
      * @return True --> Gagner False --> Pas Gagner
      */
-    private boolean verifierGagner() {
+    private Pair<Boolean, String> verifierGagner() {
 
         //Initialiser a "" (Valeur initiale --> null)
         for (int i = 0; i < 3; i++) {
@@ -110,7 +139,7 @@ public class JeuActivity extends AppCompatActivity {
                 String valeur = images[i][0].getTag().toString();
                 System.out.println(valeur);
                 unDesJoueursAGagner();
-                return true;
+                return new Pair<Boolean, String>(true, images[i][0].getTag().toString());
             }
         }
 
@@ -121,7 +150,7 @@ public class JeuActivity extends AppCompatActivity {
                     && !images[0][i].getTag().equals("")) {
                 montrerLigneGagnant(i + 3);//+3 pour commencer a la case 3 pour les colonnes
                 unDesJoueursAGagner();
-                return true;
+                return new Pair<Boolean, String>(true, images[i][0].getTag().toString());
             }
         }
 
@@ -131,7 +160,7 @@ public class JeuActivity extends AppCompatActivity {
                 && !images[0][0].getTag().equals("")) {
             montrerLigneGagnant(6);
             unDesJoueursAGagner();
-            return true;
+            return new Pair<Boolean, String>(true, images[0][0].getTag().toString());
         }
 
         //Verifie la diagonale 2
@@ -140,10 +169,10 @@ public class JeuActivity extends AppCompatActivity {
                 && !images[0][2].getTag().equals("")) {
             montrerLigneGagnant(7);
             unDesJoueursAGagner();
-            return true;
+            return new Pair<Boolean, String>(true, images[0][0].getTag().toString());
         }
 
-        return false;
+        return new Pair<Boolean, String>(false, null);
     }
 
     /**
@@ -196,5 +225,11 @@ public class JeuActivity extends AppCompatActivity {
 
     public void click_restart(View view) {
         this.recreate();
+    }
+
+
+    public void click_menu(View view) {
+        Intent i = new Intent(this, MenuActivity.class);
+        startActivity(i);
     }
 }
