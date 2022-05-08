@@ -23,6 +23,7 @@ public class JeuActivity extends AppCompatActivity {
     private ImageView[][] images = new ImageView[3][3];
 
     private TextView textViewJoueur1, textViewJoueur2;
+    private int tour = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,19 +55,30 @@ public class JeuActivity extends AppCompatActivity {
         images[2][1] = findViewById(R.id.btn_7);
         images[2][2] = findViewById(R.id.btn_8);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
                 int finalI = i;
                 int finalJ = j;
-                images[i][j].setOnClickListener(new View.OnClickListener() {
+                System.out.println(tour);
+                images[i][j].setOnClickListener(new View.OnClickListener(){
                     @Override
-                    public void onClick(View v) {
-                        images[finalI][finalJ].setImageResource(R.drawable.o);
-                        images[finalI][finalJ].setTag("X");
+                    public void onClick(View v){
+                        tour+=1;
+                        int tourJoueur = tour % 2;
+                        System.out.println(tourJoueur);
+                        if(tourJoueur == 0) {
+                            images[finalI][finalJ].setImageResource(R.drawable.o);
+                            images[finalI][finalJ].setTag("O");
+                        }
+                        else if(tourJoueur == 1){
+                            images[finalI][finalJ].setImageResource(R.drawable.x);
+                            images[finalI][finalJ].setTag("X");
+                        }
                         images[finalI][finalJ].getLayoutParams().height = 182;
                         images[finalI][finalJ].getLayoutParams().width = 182;
-                        if (verifierGagner())
+                        if(verifierGagner()){
                             System.out.println("true");
+                        }
                     }
                 });
             }
@@ -94,6 +106,8 @@ public class JeuActivity extends AppCompatActivity {
                     && images[i][0].getTag().equals(images[i][2].getTag())
                     && !images[i][0].getTag().equals("")) {
                 montrerLigneGagnant(i);
+                String valeur = images[i][0].getTag().toString();
+                System.out.println(valeur);
                 return true;
             }
         }
