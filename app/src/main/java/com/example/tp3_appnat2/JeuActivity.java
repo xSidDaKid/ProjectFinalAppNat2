@@ -24,15 +24,25 @@ public class JeuActivity extends AppCompatActivity {
 
     private ImageView[][] images = new ImageView[3][3];
 
-    private TextView textViewJoueur1, textViewJoueur2;
+    private TextView textViewJoueur1, textViewJoueur2,textViewScore1,textViewScore2;
     private int tour = 1;
     private String joueur="";
     private boolean partiFini = false;
-    private int scoreJoueur1, scoreJoueur2 = 0;
+    private static int scoreJoueur1, scoreJoueur2 = 0;
+    private int[] orientationInt= {0,0,0,0,0,0,0,0,0};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
+        if(savedInstanceState !=null){
+            orientationInt = savedInstanceState.getIntArray("listeJeu");
+            tour = savedInstanceState.getInt("tour");
+            joueur = savedInstanceState.getString("joueur");
+            scoreJoueur1 = savedInstanceState.getInt("score1");
+            scoreJoueur2 = savedInstanceState.getInt("score2");
+        }
+
         init();
 
         // l'idee etant que si la parti est fini, on le dirigie vers une autre page pour
@@ -49,11 +59,17 @@ public class JeuActivity extends AppCompatActivity {
 
     public void init() {
         Intent i2 = getIntent();
+        tour = i2.getIntExtra("tourNombre",1);
         String p1 = i2.getStringExtra("nomJoueurUn");
         String p2 = i2.getStringExtra("nomJoueurDeux");
 
         textViewJoueur1 = findViewById(R.id.scoreJoeur1);
         textViewJoueur2 = findViewById(R.id.scoreJoeur2);
+        textViewScore1 = findViewById(R.id.score1);
+        textViewScore2 = findViewById(R.id.score2);
+
+        textViewScore1.setText(scoreJoueur1+"");
+        textViewScore2.setText(scoreJoueur2+"");
 
         textViewJoueur1.append(p1);
         textViewJoueur2.append(p2);
@@ -70,6 +86,136 @@ public class JeuActivity extends AppCompatActivity {
         images[2][1] = findViewById(R.id.btn_7);
         images[2][2] = findViewById(R.id.btn_8);
 
+
+
+
+
+        for(int i=0;i<orientationInt.length;i++){
+            if(i==0){
+                if(orientationInt[i]==1){
+                    images[0][0].setImageResource(R.drawable.o);
+                    images[0][0].setTag("O");
+                    images[0][0].getLayoutParams().height = 182;
+                    images[0][0].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[0][0].setImageResource(R.drawable.x);
+                    images[0][0].setTag("X");
+                    images[0][0].getLayoutParams().height = 182;
+                    images[0][0].getLayoutParams().width = 182;
+                }
+            }else if(i==1){
+                if(orientationInt[i]==1){
+                    images[0][1].setImageResource(R.drawable.o);
+                    images[0][1].setTag("O");
+                    images[0][1].getLayoutParams().height = 182;
+                    images[0][1].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[0][1].setImageResource(R.drawable.x);
+                    images[0][1].setTag("X");
+                    images[0][1].getLayoutParams().height = 182;
+                    images[0][1].getLayoutParams().width = 182;
+                }
+            }else if(i==2){
+                if(orientationInt[i]==1){
+                    images[0][2].setImageResource(R.drawable.o);
+                    images[0][2].setTag("O");
+                    images[0][2].getLayoutParams().height = 182;
+                    images[0][2].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[0][2].setImageResource(R.drawable.x);
+                    images[0][2].setTag("X");
+                    images[0][2].getLayoutParams().height = 182;
+                    images[0][2].getLayoutParams().width = 182;
+                }
+            }else if(i==3){
+                if(orientationInt[i]==1){
+                    images[1][0].setImageResource(R.drawable.o);
+                    images[1][0].setTag("O");
+                    images[1][0].getLayoutParams().height = 182;
+                    images[1][0].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[1][0].setImageResource(R.drawable.x);
+                    images[1][0].setTag("X");
+                    images[1][0].getLayoutParams().height = 182;
+                    images[1][0].getLayoutParams().width = 182;
+                }
+            }else if(i==4){
+                if(orientationInt[i]==1){
+                    images[1][1].setImageResource(R.drawable.o);
+                    images[1][1].setTag("O");
+                    images[1][1].getLayoutParams().height = 182;
+                    images[1][1].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[1][1].setImageResource(R.drawable.x);
+                    images[1][1].setTag("X");
+                    images[1][1].getLayoutParams().height = 182;
+                    images[1][1].getLayoutParams().width = 182;
+                }
+            }else if(i==5){
+                if(orientationInt[i]==1){
+                    images[1][2].setImageResource(R.drawable.o);
+                    images[1][2].setTag("O");
+                    images[1][2].getLayoutParams().height = 182;
+                    images[1][2].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[1][2].setImageResource(R.drawable.x);
+                    images[1][2].setTag("X");
+                    images[1][2].getLayoutParams().height = 182;
+                    images[1][2].getLayoutParams().width = 182;
+                }
+            }else if(i==6){
+                if(orientationInt[i]==1){
+                    images[2][0].setImageResource(R.drawable.o);
+                    images[2][0].setTag("O");
+                    images[2][0].getLayoutParams().height = 182;
+                    images[2][0].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[2][0].setImageResource(R.drawable.x);
+                    images[2][0].setTag("X");
+                    images[2][0].getLayoutParams().height = 182;
+                    images[2][0].getLayoutParams().width = 182;
+                }
+            }else if(i==7){
+                if(orientationInt[i]==1){
+                    images[2][1].setImageResource(R.drawable.o);
+                    images[2][1].setTag("O");
+                    images[2][1].getLayoutParams().height = 182;
+                    images[2][1].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[2][1].setImageResource(R.drawable.x);
+                    images[2][1].setTag("X");
+                    images[2][1].getLayoutParams().height = 182;
+                    images[2][1].getLayoutParams().width = 182;
+                }
+            }else if(i==8){
+                if(orientationInt[i]==1){
+                    images[2][2].setImageResource(R.drawable.o);
+                    images[2][2].setTag("O");
+                    images[2][2].getLayoutParams().height = 182;
+                    images[2][2].getLayoutParams().width = 182;
+                }
+                if(orientationInt[i]==2){
+                    images[2][2].setImageResource(R.drawable.x);
+                    images[2][2].setTag("X");
+                    images[2][2].getLayoutParams().height = 182;
+                    images[2][2].getLayoutParams().width = 182;
+                }
+            }
+        }
+        if(joueur.equals("Player 1")){
+            tour=1;
+        }else if(joueur.equals("Player 2")){
+            tour=2;
+        }
+
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 int finalI = i;
@@ -78,16 +224,20 @@ public class JeuActivity extends AppCompatActivity {
                 images[i][j].setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+
                         tour+=1;
+                        System.out.println("tour"+tour);
                         int tourJoueur = tour % 2;
-                        System.out.println(tourJoueur);
+                        System.out.println(tourJoueur +"modulo");
                         if(tourJoueur == 0) {
                             images[finalI][finalJ].setImageResource(R.drawable.o);
                             images[finalI][finalJ].setTag("O");
+                            orientationInt[3*finalI+finalJ]=1;
                         }
                         else if(tourJoueur == 1){
                             images[finalI][finalJ].setImageResource(R.drawable.x);
                             images[finalI][finalJ].setTag("X");
+                            orientationInt[3*finalI+finalJ]=2;
                         }
                         images[finalI][finalJ].getLayoutParams().height = 182;
                         images[finalI][finalJ].getLayoutParams().width = 182;
@@ -100,11 +250,15 @@ public class JeuActivity extends AppCompatActivity {
                             if(conditionVictoire.second == "O"){
                                 joueur = "Player 1";
                                 scoreJoueur1+=1;
+                                textViewScore1.setText(scoreJoueur1+"");
+                                Toast.makeText(getApplicationContext(),"Player  "+ p1 +" ( "+ conditionVictoire.second+ " ) won",Toast.LENGTH_SHORT).show();
                             }else{
                                 joueur = "Player 2";
-                                scoreJoueur2+=2;
+                                scoreJoueur2+=1;
+                                textViewScore2.setText(scoreJoueur2+"");
+                                Toast.makeText(getApplicationContext(),"Player  "+ p2 +" ( "+ conditionVictoire.second+ " ) won",Toast.LENGTH_SHORT).show();
                             }
-                            Toast.makeText(getApplicationContext(),"Player  "+ conditionVictoire.second+ " won",Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -224,6 +378,8 @@ public class JeuActivity extends AppCompatActivity {
 
 
     public void click_restart(View view) {
+        orientationInt= new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        getIntent().putExtra("tourNombre",tour);
         this.recreate();
     }
 
@@ -231,5 +387,17 @@ public class JeuActivity extends AppCompatActivity {
     public void click_menu(View view) {
         Intent i = new Intent(this, MenuActivity.class);
         startActivity(i);
+    }
+
+    //Orientation
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putIntArray("listeJeu", orientationInt);
+        savedInstanceState.putInt("tour",tour);
+        savedInstanceState.putString("joueur",joueur);
+        savedInstanceState.putInt("score1",scoreJoueur1);
+        savedInstanceState.putInt("score2",scoreJoueur2);
     }
 }
