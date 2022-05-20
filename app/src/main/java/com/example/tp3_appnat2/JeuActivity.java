@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.DebugUtils;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +29,7 @@ public class JeuActivity extends AppCompatActivity {
 
     private TextView textViewJoueur1, textViewJoueur2,textViewScore1,textViewScore2;
     private int tour = 1;
+    private int tourInitiale=0;
     private String joueur="";
     private boolean partiFini = false;
     private static int scoreJoueur1, scoreJoueur2 = 0;
@@ -42,8 +46,8 @@ public class JeuActivity extends AppCompatActivity {
             scoreJoueur1 = savedInstanceState.getInt("score1");
             scoreJoueur2 = savedInstanceState.getInt("score2");
         }
-
         init();
+        this.tourInitiale = tour;
 
         // l'idee etant que si la parti est fini, on le dirigie vers une autre page pour
         // demander s'il veut commencer en premier ou non au gagnant
@@ -243,22 +247,32 @@ public class JeuActivity extends AppCompatActivity {
                         images[finalI][finalJ].getLayoutParams().width = 182;
                         images[finalI][finalJ].setClickable(false);
                         Pair<Boolean, String> conditionVictoire = verifierGagner();
+                        System.out.println(tour);
                         if(conditionVictoire.first == true){
                             partiFini = true;
                             System.out.println("true");
                             System.out.println(conditionVictoire.second);
                             if(conditionVictoire.second == "O"){
+                                System.out.println("IN HERE 1");
                                 joueur = "Player 1";
                                 scoreJoueur1+=1;
                                 textViewScore1.setText(scoreJoueur1+"");
                                 Toast.makeText(getApplicationContext(),"Player  "+ p1 +" ( "+ conditionVictoire.second+ " ) won",Toast.LENGTH_SHORT).show();
                             }else{
+                                System.out.println("IN HERE 2");
                                 joueur = "Player 2";
                                 scoreJoueur2+=1;
                                 textViewScore2.setText(scoreJoueur2+"");
                                 Toast.makeText(getApplicationContext(),"Player  "+ p2 +" ( "+ conditionVictoire.second+ " ) won",Toast.LENGTH_SHORT).show();
                             }
-
+                        //Si le joueur O gagne, tour est initialise a 1 alors le nombre maximale de tour est de 10
+                        }else if(conditionVictoire.first == false && tour==10 && tourInitiale == 1){
+                            System.out.println("IN HERE 3");
+                            Toast.makeText(getApplicationContext(),"Partie Nulle",Toast.LENGTH_SHORT).show();
+                            //Si le joueur X gagne, tour est initialise a 2 alors le nombre maximale de tour est de 11
+                        }else if(conditionVictoire.first == false && tour==11 && tourInitiale == 2){
+                            System.out.println("IN HERE 3");
+                            Toast.makeText(getApplicationContext(),"Partie Nulle",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
